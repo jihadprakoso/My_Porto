@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jihad | SysTech Engineering</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #050505;
+            --bg-surface: #111111;
+            --bg-card: #161616;
+            --border-dim: #222222;
+            --border-glow: #3b82f6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-gradient: linear-gradient(135deg, #38bdf8, #818cf8);
+        }
+
+        html,
+        body {
+            overflow-x: hidden !important;
+            width: 100%;
+        }
+
+        body {
+            padding-top: 76px;
+            /* Offset for fixed header */
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.5px;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .text-gradient {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        /* Navigation */
+        .systech-nav {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-dim);
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: fixed;
+            left: 0;
+            right: 0;
+            width: 100%;
+            top: 0;
+            z-index: 9999;
+        }
+
+        .systech-nav .brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .systech-nav .brand::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .systech-nav a.nav-link {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        .systech-nav a.nav-link:hover {
+            color: var(--text-main);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 120px 0 80px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Buttons */
+        .btn-systech {
+            background: var(--text-main);
+            color: var(--bg-base);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-systech:hover {
+            background: #e2e8f0;
+        }
+
+        .btn-systech-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-dim);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-systech-outline:hover {
+            border-color: var(--text-muted);
+            background: var(--bg-surface);
+        }
+
+        /* Status Badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 50px;
+            color: #10b981;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+        }
+
+        /* Cards */
+        .systech-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            padding: 24px;
+            height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .systech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .systech-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.05);
+            cursor: pointer;
+        }
+
+        .systech-card:hover::before {
+            opacity: 1;
+        }
+
+        .systech-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .systech-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .tech-stack span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--bg-surface);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--border-dim);
+        }
+
+        /* Global Cursor */
+        a,
+        button,
+        .filter-btn,
+        .nav-link,
+        #figma-toggle {
+            cursor: pointer !important;
+        }
+
+        /* Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        /* Tech Stack Easter Eggs CSS */
+        .blinking-cursor {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .mock-editor {
+            background: #1e1e1e;
+            border-radius: 8px;
+            border: 1px solid var(--border-dim);
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .mock-editor-header {
+            background: #2d2d2d;
+            padding: 8px 15px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            border-bottom: 1px solid #111;
+        }
+
+        .mock-editor-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .mock-editor-body {
+            padding: 20px;
+            color: #d4d4d4;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+
+        .syntax-keyword {
+            color: #569cd6;
+        }
+
+        .syntax-string {
+            color: #ce9178;
+        }
+
+        .syntax-variable {
+            color: #9cdcfe;
+        }
+
+        .syntax-comment {
+            color: #6a9955;
+        }
+
+        .syntax-method {
+            color: #dcdcaa;
+        }
+
+        .syntax-brace {
+            color: #ffd700;
+        }
+
+        .syntax-property {
+            color: #9cdcfe;
+        }
+
+        /* Figma Inspect Mode CSS */
+        body.figma-mode * {
+            outline: 1px solid rgba(56, 189, 248, 0.3) !important;
+            transition: outline 0.2s;
+        }
+
+        body.figma-mode *:hover {
+            outline: 2px solid rgba(255, 95, 86, 0.8) !important;
+            background: rgba(255, 95, 86, 0.05) !important;
+            cursor: crosshair;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                padding: 80px 0 60px;
+            }
+
+            .hero-avatar-placeholder {
+                width: 250px !important;
+                height: 250px !important;
+            }
+
+            .systech-nav .container {
+                flex-wrap: wrap;
+            }
+
+            .show-mobile {
+                display: flex !important;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+                padding-top: 15px;
+                border-top: 1px solid var(--border-dim);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+            }
+
+            .project-filters .filter-btn {
+                flex: 1 1 calc(50% - 10px);
+                text-align: center;
+                font-size: 0.8rem;
+                padding: 0.5rem;
+            }
+
+            .container {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="systech-nav">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center">
+            <a href="#" class="brand">jihad.sys</a>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="d-md-none btn btn-sm"
+                style="color: var(--text-muted); border: 1px solid var(--border-dim); background: transparent;">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Navigation Links -->
+            <div id="nav-links-wrapper" class="d-none d-md-flex gap-4 align-items-start align-items-md-center">
+                <a href="#engineering" class="nav-link font-mono">01. Engineering</a>
+                <a href="#identity" class="nav-link font-mono">02. Identity</a>
+                <a href="#systems" class="nav-link font-mono">03. Systems</a>
+                <a href="#experience" class="nav-link font-mono">04. Experience</a>
+                <a href="#contact" class="nav-link font-mono">05. Contact</a>
+                <button id="figma-toggle" class="btn btn-sm font-mono mt-2 mt-md-0 ms-md-3"
+                    style="border: 1px solid var(--border-dim); color: var(--text-muted); border-radius: 4px; padding: 2px 8px; transition: 0.2s;">
+                    <i class="fa-brands fa-figma" style="color: #f24e1e;"></i> Inspect
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="engineering" class="hero container">
+        <div class="row align-items-center">
+            <div class="col-lg-7" data-aos="fade-right">
+                <div class="status-badge">
+                    <div class="status-dot"></div> System Online & Ready for Deployment
+                </div>
+
+                <div class="font-mono mb-3" style="color: var(--text-muted); font-size: 0.9rem;">
+                    <span style="color: var(--accent);">jihad@systech:~$</span> <span id="typewriter"></span><span
+                        class="blinking-cursor">_</span>
+                </div>
+
+                <h1>Building high-performance <br> <span class="text-gradient">digital products.</span></h1>
+                <p>
+                    I am Jihad, a Full Stack Web Developer. I turn complex ideas into seamless digital experiences.
+                    Whether you need a sleek business landing page, a custom e-commerce engine, or a reliable internal
+                    management system, I build solutions that help your business grow.
+                </p>
+
+                <div class="d-flex gap-3">
+                    <a href="#systems" class="btn-systech">Deploy Project <svg width="16" height="16"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg></a>
+                    <a href="https://github.com" target="_blank" class="btn-systech-outline font-mono">&gt;
+                        view_github</a>
+                </div>
+            </div>
+
+            <div class="col-lg-5 text-center mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
+                <img src="profile_jihad.png" alt="Jihad Profile" class="hero-avatar-placeholder mx-auto"
+                    style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border-dim); box-shadow: 0 0 40px rgba(56, 189, 248, 0.1);">
+            </div>
+        </div>
+    </section>
+
+    <section id="identity" class="container" style="padding: 60px 0;">
+        <div class="row g-5">
+            <!-- About Me -->
+            <div class="col-lg-6" data-aos="fade-up">
+                <h2 class="mb-2">System Profile</h2>
+                <p class="text-muted font-mono mb-4">// Who I Am</p>
+                <div class="mock-editor" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mock-editor-header">
+                        <div class="mock-editor-dot" style="background:#ff5f56;"></div>
+                        <div class="mock-editor-dot" style="background:#ffbd2e;"></div>
+                        <div class="mock-editor-dot" style="background:#27c93f;"></div>
+                        <span style="margin-left:10px; font-size:0.75rem; color:#888;">Developer.php</span>
+                    </div>
+                    <div class="mock-editor-body font-mono">
+                        <pre style="margin:0;"><span class="syntax-keyword">class</span> <span class="syntax-method">Jihad</span> <span class="syntax-keyword">extends</span> <span class="syntax-property">FullStackDeveloper</span> <span class="syntax-brace">{</span>
+    <span class="syntax-keyword">public string</span> <span class="syntax-variable">$location</span> = <span class="syntax-string">'Indonesia'</span>;
+    <span class="syntax-keyword">public string</span> <span class="syntax-variable">$status</span> = <span class="syntax-string">'Open to Opportunities'</span>;
+
+    <span class="syntax-keyword">public function</span> <span class="syntax-method">getProfile</span>() <span class="syntax-brace">{</span>
+        <span class="syntax-keyword">return</span> <span class="syntax-string">"I bridge the gap between beautiful UI/UX 
+               design and reliable backend systems to 
+               help businesses operate smoother and 
+               sell better."</span>;
+    <span class="syntax-brace">}</span>
+<span class="syntax-brace">}</span></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                <h2 class="mb-2">Tech Stack</h2>
+                <p class="text-muted font-mono mb-4">// Core dependencies & libraries</p>
+
+                <div class="d-flex flex-column gap-4 mt-2">
+                    <div>
+                        <h5 class="font-mono text-muted mb-2" style="font-size:0.85rem">Backend_</h5>
+                        <div class="tech-stack">
+                            <span><i class="fa-brands fa-php"></i> PHP Native</span>
+                            <span><i class="fa-brands fa-laravel"></i> Laravel</span>
+                            <span><i class="fa-solid fa-fire"></i> CodeIgniter 3</span>
+                            <span><i class="fa-brands fa-wordpress"></i> WordPress</span>
+                            <span><i class="fa-solid fa-database"></i> MySQL</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="font-mono text-muted mb-2" style="font-size:0.85rem">Frontend_</h5>
+                        <div class="tech-stack">
+                            <span><i class="fa-brands fa-html5"></i> HTML5/CSS3</span>
+                            <span><i class="fa-brands fa-js"></i> JavaScript</span>
+                            <span><i class="fa-brands fa-bootstrap"></i> Bootstrap 5</span>
+                            <span><i class="fa-brands fa-react"></i> React 19</span>
+                            <span><i class="fa-solid fa-code"></i> TypeScript</span>
+                            <span><i class="fa-solid fa-bolt"></i> Vite</span>
+                            <span><i class="fa-brands fa-react"></i> React Native</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 class="font-mono text-muted mb-2" style="font-size:0.85rem">Tools & Design_</h5>
+                        <div class="tech-stack">
+                            <span><i class="fa-brands fa-figma"></i> Figma</span>
+                            <span><i class="fa-solid fa-pen-nib"></i> Illustrator</span>
+                            <span><i class="fa-solid fa-image"></i> Photoshop</span>
+                            <span><i class="fa-solid fa-film"></i> After Effects</span>
+                            <span><i class="fa-solid fa-video"></i> Premiere</span>
+                            <span><i class="fa-brands fa-github"></i> GitHub</span>
+                            <span><i class="fa-solid fa-server"></i> XAMPP</span>
+                            <span><i class="fa-solid fa-robot"></i> Gemini AI</span>
+                            <span><i class="fa-solid fa-terminal"></i> CLI</span>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h5 class="font-mono text-muted mb-2" style="font-size:0.85rem">Marketing & SEO_</h5>
+                        <div class="tech-stack">
+                            <span><i class="fa-solid fa-magnifying-glass-chart"></i> SEO Specialist</span>
+                            <span><i class="fa-solid fa-chart-line"></i> Google Analytics</span>
+                            <span><i class="fa-solid fa-link"></i> Backlink Strategy</span>
+                            <span><i class="fa-brands fa-wordpress"></i> WP Articles</span>
+                            <span><i class="fa-solid fa-bullseye"></i> Digital Marketing</span>
+                            <span><i class="fa-brands fa-meta"></i> Meta Ads</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section id="systems" class="container" style="padding: 60px 0 100px;">
+        <div data-aos="fade-up">
+            <h2 class="mb-2">Deployed Systems</h2>
+            <p class="text-muted font-mono mb-4">// Production-ready applications & architectures</p>
+
+            <div class="mock-editor mt-4 mb-2 d-none d-md-block"
+                style="border-color: rgba(56,189,248,0.3); background: rgba(0,0,0,0.5);" data-aos="fade-up"
+                data-aos-delay="50">
+                <div class="mock-editor-body" style="padding: 15px;">
+                    <pre style="margin:0;"><span style="color:#94a3b8;">mysql></span> <span class="syntax-keyword">SELECT</span> title, tech_stack <span class="syntax-keyword">FROM</span> projects <span class="syntax-keyword">WHERE</span> status = <span class="syntax-string">'production'</span> <span class="syntax-keyword">ORDER BY</span> id <span class="syntax-keyword">DESC</span>;
+<span style="color:#6a9955;">/* 8 rows returned in 0.012ms */</span></pre>
+                </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mt-4 project-filters" data-aos="fade-up" data-aos-delay="100">
+                <button class="btn btn-sm btn-systech filter-btn active" data-filter="all">All Systems</button>
+                <button class="btn btn-sm btn-systech-outline filter-btn" data-filter="php">PHP / Laravel</button>
+                <button class="btn btn-sm btn-systech-outline filter-btn" data-filter="js">JS / React</button>
+                <button class="btn btn-sm btn-systech-outline filter-btn" data-filter="design">Design / WP</button>
+                <button class="btn btn-sm btn-systech-outline filter-btn" data-filter="seo">SEO & Marketing</button>
+            </div>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 0 (SEO) -->
+            <div class="systech-card project-item" data-category="seo design" data-aos="fade-up" data-aos-delay="50">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                        <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                    </svg>
+                    <span class="font-mono text-muted" style="font-size: 0.75rem;">Marketing</span>
+                </div>
+                <h3>SEO & Landing Page Network</h3>
+                <p>Designed high-converting landing pages and a network of WordPress articles optimized for backlinking,
+                    significantly boosting organic traffic and digital sales.</p>
+                <div class="tech-stack">
+                    <span>SEO</span><span>WordPress</span><span>Copywriting</span><span>Analytics</span>
+                </div>
+            </div>
+
+            <!-- Project 1 -->
+            <div class="systech-card project-item" data-category="js" data-aos="fade-up" data-aos-delay="100">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    <span class="font-mono text-muted" style="font-size: 0.75rem;">v2.1.0</span>
+                </div>
+                <h3>Trading Analysis AI</h3>
+                <p>A live analytics dashboard utilizing AI to visualize real-time market data, helping users make
+                    faster, data-driven decisions.</p>
+                <div class="tech-stack">
+                    <span>React 19</span><span>TypeScript</span><span>Vite</span><span>Gemini API</span>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="systech-card project-item" data-category="php" data-aos="fade-up" data-aos-delay="200">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                    <span class="font-mono text-muted" style="font-size: 0.75rem;">Enterprise</span>
+                </div>
+                <h3>Internal ERP System</h3>
+                <p>A comprehensive internal management system handling HR, attendance, and payroll processing, designed
+                    to streamline company operations securely.</p>
+                <div class="tech-stack">
+                    <span>Laravel</span><span>MySQL</span><span>Redis</span>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="systech-card project-item" data-category="php" data-aos="fade-up" data-aos-delay="300">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="font-mono text-muted" style="font-size: 0.75rem;">v1.5.0</span>
+                </div>
+                <h3>Marketplace Core</h3>
+                <p>A robust multi-vendor e-commerce platform built to handle complex transactions and inventory
+                    management, providing a seamless shopping experience.</p>
+                <div class="tech-stack">
+                    <span>CodeIgniter 3</span><span>PHP</span><span>Bootstrap</span>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="systech-card project-item" data-category="php" data-aos="fade-up" data-aos-delay="400">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                    <span class="font-mono text-muted" style="font-size: 0.75rem;">Standalone</span>
+                </div>
+                <h3>Warehouse WMS</h3>
+                <p>A fast and reliable Warehouse Management System (WMS) tailored for efficient inventory tracking,
+                    reducing errors in day-to-day logistics.</p>
+                <div class="tech-stack">
+                    <span>PHP Native</span><span>MySQL</span><span>Vanilla JS</span>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="systech-card project-item" data-category="js design" data-aos="fade-up" data-aos-delay="100">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                    <span class="font-mono text-muted" style="font-size: 0.75rem;">Static</span>
+                </div>
+                <h3>Company Profile</h3>
+                <p>A modern, conversion-optimized company landing page designed to load lightning-fast and turn visitors
+                    into potential clients.</p>
+                <div class="tech-stack">
+                    <span>HTML5</span><span>CSS3</span><span>Vanilla JS</span>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="systech-card project-item" data-category="php design" data-aos="fade-up" data-aos-delay="200">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                        <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                        <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                    </svg>
+                    <span class="font-mono text-muted" style="font-size: 0.75rem;">CMS</span>
+                </div>
+                <h3>WordPress Architecture</h3>
+                <p>A highly customized WordPress website built from scratch, offering a unique design and an easy-to-use
+                    content management experience.</p>
+                <div class="tech-stack">
+                    <span>WordPress</span><span>PHP</span><span>MySQL</span>
+                </div>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="systech-card project-item" data-category="design" data-aos="fade-up" data-aos-delay="300">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 20h9"></path>
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                    </svg>
+                    <span class="font-mono text-muted" style="font-size: 0.75rem;">Design</span>
+                </div>
+                <h3>UI/UX Design System</h3>
+                <p>A complete UI/UX design system and interactive prototypes, ensuring a consistent and engaging visual
+                    identity across digital products.</p>
+                <div class="tech-stack">
+                    <span>Figma</span><span>Design System</span>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="systech-card project-item" data-category="php" data-aos="fade-up" data-aos-delay="400">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 17 22 12"></polyline>
+                    </svg>
+                    <span class="font-mono text-muted" style="font-size: 0.75rem;">Legacy</span>
+                </div>
+                <h3>Inventory Tracking</h3>
+                <p>A streamlined inventory application that automates stock tracking and reporting, saving hours of
+                    manual administrative work.</p>
+                <div class="tech-stack">
+                    <span>PHP Native</span><span>Bootstrap 4</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="experience" class="container" style="padding: 0 0 100px;">
+        <div data-aos="fade-up">
+            <h2 class="mb-2">Commit History</h2>
+            <p class="text-muted font-mono mb-4">// Education & professional experience timeline</p>
+        </div>
+
+        <div class="row g-5">
+            <!-- Left Column: Work Experience -->
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="mb-4" style="font-size: 1.25rem;"><i class="fa-solid fa-briefcase text-muted"></i> Work
+                    Experience</h3>
+                <div class="systech-card" style="height: auto; padding: 40px 30px;">
+                    <div style="border-left: 1px solid var(--border-glow); position: relative; padding-left: 30px; margin-left: 10px;"
+                        class="d-flex flex-column gap-5">
+
+                        <!-- Work Item 1 -->
+                        <div style="position: relative;">
+                            <div
+                                style="position: absolute; left: -36px; top: 0; width: 11px; height: 11px; background: var(--bg-base); border: 2px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent);">
+                            </div>
+                            <span class="font-mono text-muted d-block mb-1" style="font-size: 0.8rem;">2025 –
+                                Present</span>
+                            <h4 class="mb-1">Web Developer</h4>
+                            <p class="text-muted font-mono mb-2" style="font-size: 0.85rem;">[ PT Xerography Indonesia ]
+                            </p>
+                            <p class="text-muted mb-0" style="font-size: 0.95rem;">Building and maintaining reliable web
+                                applications and systems tailored to the company's operational needs.</p>
+                        </div>
+
+                        <!-- Work Item 2 -->
+                        <div style="position: relative;">
+                            <div
+                                style="position: absolute; left: -36px; top: 0; width: 11px; height: 11px; background: var(--bg-base); border: 2px solid var(--text-muted); border-radius: 50%;">
+                            </div>
+                            <span class="font-mono text-muted d-block mb-1" style="font-size: 0.8rem;">2023 –
+                                2025</span>
+                            <h4 class="mb-1">Full Stack Web Developer</h4>
+                            <p class="text-muted font-mono mb-2" style="font-size: 0.85rem;">[ Freelance / Self-Employed
+                                ]</p>
+                            <p class="text-muted mb-0" style="font-size: 0.95rem;">Helping clients build reliable web
+                                applications tailored to their needs. Delivered custom internal platforms, scalable
+                                marketplaces, and inventory systems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Education -->
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="mb-4" style="font-size: 1.25rem;"><i class="fa-solid fa-graduation-cap text-muted"></i>
+                    Education</h3>
+                <div class="systech-card" style="height: auto; padding: 40px 30px;">
+                    <div style="border-left: 1px solid var(--text-muted); position: relative; padding-left: 30px; margin-left: 10px;"
+                        class="d-flex flex-column gap-5">
+
+                        <!-- Edu Item 1 -->
+                        <div style="position: relative;">
+                            <div
+                                style="position: absolute; left: -36px; top: 0; width: 11px; height: 11px; background: var(--bg-base); border: 2px solid var(--text-muted); border-radius: 50%;">
+                            </div>
+                            <span class="font-mono text-muted d-block mb-1" style="font-size: 0.8rem;">2017 –
+                                2021</span>
+                            <h4 class="mb-1">Teknik Lingkungan</h4>
+                            <p class="text-muted font-mono mb-2" style="font-size: 0.85rem;">[ Universitas Brawijaya ]
+                            </p>
+                            <p class="text-muted mb-0" style="font-size: 0.95rem;">Program Studi Teknik Lingkungan.
+                                Developed strong analytical, research, and problem-solving skills.</p>
+                        </div>
+
+                        <!-- Edu Item 2 -->
+                        <div style="position: relative;">
+                            <div
+                                style="position: absolute; left: -36px; top: 0; width: 11px; height: 11px; background: var(--bg-base); border: 2px solid var(--text-muted); border-radius: 50%;">
+                            </div>
+                            <span class="font-mono text-muted d-block mb-1" style="font-size: 0.8rem;">2014 –
+                                2017</span>
+                            <h4 class="mb-1">High School</h4>
+                            <p class="text-muted font-mono mb-2" style="font-size: 0.85rem;">[ SMA N 3 Kota Bogor ]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container" style="padding: 40px 0 60px; text-align: center;">
+        <div data-aos="zoom-in"
+            style="padding: 60px 20px; background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 8px;">
+            <h2 class="mb-3">Ready to build?</h2>
+            <p class="text-muted mb-4 mx-auto" style="max-width: 500px;">Let's discuss how we can bring your ideas to
+                life. Reach out for project inquiries, freelance collaborations, or technical consultations.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap mt-2">
+                <a href="mailto:jihadprakoso@gmail.com" class="btn-systech">Initialize Contact <svg width="16"
+                        height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg></a>
+                <a href="https://wa.me/6285773837959" class="btn-systech-outline"
+                    style="border-color: rgba(37, 211, 102, 0.4); color: #25d366;">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="border-top: 1px solid var(--border-dim); padding: 40px 0; margin-top: 20px;">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div class="font-mono text-muted text-center text-md-start" style="font-size: 0.8rem;">
+                © 2026 JIHAD.SYS // ALL SYSTEMS
+            </div>
+            <div class="d-flex flex-wrap justify-content-center gap-2 mt-3 mt-md-0 font-mono"
+                style="font-size: 0.75rem;">
+                <a href="https://github.com/jihadprakoso" target="_blank"
+                    style="color: var(--text-muted); text-decoration: none; transition: 0.2s;"
+                    onmouseover="this.style.color='var(--text-main)'"
+                    onmouseout="this.style.color='var(--text-muted)'">[ GITHUB ]</a>
+                <a href="https://www.linkedin.com/in/jihad-prakoso/" target="_blank"
+                    style="color: var(--text-muted); text-decoration: none; transition: 0.2s;"
+                    onmouseover="this.style.color='var(--text-main)'"
+                    onmouseout="this.style.color='var(--text-muted)'">[ LINKEDIN ]</a>
+                <a href="mailto:jihadprakoso@gmail.com"
+                    style="color: var(--text-muted); text-decoration: none; transition: 0.2s;"
+                    onmouseover="this.style.color='var(--text-main)'"
+                    onmouseout="this.style.color='var(--text-muted)'">[ EMAIL ]</a>
+                <a href="https://wa.me/6285773837959" target="_blank"
+                    style="color: var(--text-muted); text-decoration: none; transition: 0.2s;"
+                    onmouseover="this.style.color='var(--text-main)'"
+                    onmouseout="this.style.color='var(--text-muted)'">[ WHATSAPP ]</a>
+                <a href="https://instagram.com/____jeey" target="_blank"
+                    style="color: var(--text-muted); text-decoration: none; transition: 0.2s;"
+                    onmouseover="this.style.color='var(--text-main)'"
+                    onmouseout="this.style.color='var(--text-muted)'">[ INSTAGRAM ]</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Figma Inspect Mode Toggle
+        const figmaToggle = document.getElementById('figma-toggle');
+        if (figmaToggle) {
+            figmaToggle.addEventListener('click', () => {
+                document.body.classList.toggle('figma-mode');
+                if (document.body.classList.contains('figma-mode')) {
+                    figmaToggle.innerHTML = '<i class="fa-brands fa-figma" style="color: #f24e1e;"></i> Exit Inspect';
+                    figmaToggle.style.background = 'rgba(56, 189, 248, 0.1)';
+                    figmaToggle.style.borderColor = 'var(--accent)';
+                } else {
+                    figmaToggle.innerHTML = '<i class="fa-brands fa-figma" style="color: #f24e1e;"></i> Inspect';
+                    figmaToggle.style.background = 'transparent';
+                    figmaToggle.style.borderColor = 'var(--border-dim)';
+                }
+            });
+        }
+
+        // Terminal Typewriter Effect
+        const typewriterElement = document.getElementById('typewriter');
+        if (typewriterElement) {
+            const textToType = "npm run start:production";
+            let index = 0;
+            function typeWriter() {
+                if (index < textToType.length) {
+                    typewriterElement.innerHTML += textToType.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 100); // typing speed
+                }
+            }
+            setTimeout(typeWriter, 1000); // initial delay
+        }
+
+        // Project Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectItems = document.querySelectorAll('.project-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => {
+                    b.classList.remove('btn-systech');
+                    b.classList.add('btn-systech-outline');
+                    b.classList.remove('active');
+                });
+
+                // Add active class to clicked button
+                btn.classList.remove('btn-systech-outline');
+                btn.classList.add('btn-systech');
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category').includes(filterValue)) {
+                        item.style.display = 'flex';
+                        // Retrigger AOS
+                        item.classList.remove('aos-animate');
+                        setTimeout(() => {
+                            item.classList.add('aos-animate');
+                        }, 50);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navLinksWrapper = document.getElementById('nav-links-wrapper');
+        const mobileNavLinks = document.querySelectorAll('.nav-link');
+
+        if (mobileMenuBtn && navLinksWrapper) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinksWrapper.classList.toggle('show-mobile');
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinksWrapper.classList.remove('show-mobile');
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
