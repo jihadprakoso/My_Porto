@@ -222,6 +222,16 @@
             flex-direction: column;
         }
 
+        a.systech-card {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a.systech-card:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
         .systech-card::before {
             content: '';
             position: absolute;
@@ -379,6 +389,63 @@
             cursor: crosshair;
         }
 
+        /* Footer Styles */
+        .systech-footer {
+            border-top: 1px solid var(--border-dim);
+            padding: 40px 0;
+            margin-top: 20px;
+            background: rgba(5, 5, 5, 0.7);
+        }
+
+        .footer-social-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid transparent;
+            background: transparent;
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+        }
+
+        .footer-social-link:hover {
+            color: var(--text-main);
+            background: var(--bg-surface);
+            border-color: var(--border-dim);
+            transform: translateY(-2px);
+        }
+
+        .footer-social-link:hover i {
+            transform: scale(1.15);
+        }
+
+        .footer-social-link i {
+            transition: transform 0.2s ease;
+        }
+
+        .server-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 3px 8px;
+            border-radius: 20px;
+        }
+
+        .server-status-pill .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #10b981;
+        }
+
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .hero h1 {
@@ -430,7 +497,7 @@
 
     <nav class="systech-nav">
         <div class="container d-flex flex-wrap justify-content-between align-items-center">
-            <a href="#" class="brand">jihad.sys</a>
+            <a href="#engineering" class="brand">jihad.sys</a>
 
             <!-- Mobile Menu Toggle Button -->
             <button id="mobile-menu-btn" class="d-md-none btn btn-sm"
@@ -479,7 +546,7 @@
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg></a>
-                    <a href="https://github.com" target="_blank" class="btn-systech-outline font-mono">&gt;
+                    <a href="https://github.com/jihadprakoso" target="_blank" rel="noopener noreferrer" class="btn-systech-outline font-mono">&gt;
                         view_github</a>
                 </div>
             </div>
@@ -576,7 +643,6 @@
                 </div>
             </div>
         </div>
-        </div>
     </section>
 
     <section id="systems" class="container" style="padding: 60px 0 100px;">
@@ -604,7 +670,7 @@
 
         <div class="projects-grid">
             <!-- Project 0 (SEO) -->
-            <div class="systech-card project-item" data-category="seo design" data-aos="fade-up" data-aos-delay="50">
+            <a class="systech-card project-item" href="https://github.com/jihadprakoso/WP-Elementor" target="_blank" rel="noopener noreferrer" aria-label="View SEO & Landing Page Network source on GitHub" data-category="seo design" data-aos="fade-up" data-aos-delay="50">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -619,10 +685,10 @@
                 <div class="tech-stack">
                     <span>SEO</span><span>WordPress</span><span>Copywriting</span><span>Analytics</span>
                 </div>
-            </div>
+            </a>
 
             <!-- Project 1 -->
-            <div class="systech-card project-item" data-category="js" data-aos="fade-up" data-aos-delay="100">
+            <a class="systech-card project-item" href="https://github.com/jihadprakoso/TRADING-ANALYSIS" target="_blank" rel="noopener noreferrer" aria-label="View Trading Analysis AI source on GitHub" data-category="js" data-aos="fade-up" data-aos-delay="100">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -636,10 +702,10 @@
                 <div class="tech-stack">
                     <span>React 19</span><span>TypeScript</span><span>Vite</span><span>Gemini API</span>
                 </div>
-            </div>
+            </a>
 
             <!-- Project 2 -->
-            <div class="systech-card project-item" data-category="php" data-aos="fade-up" data-aos-delay="200">
+            <a class="systech-card project-item" href="https://github.com/jihadprakoso/ERP" target="_blank" rel="noopener noreferrer" aria-label="View Internal ERP System source on GitHub" data-category="php" data-aos="fade-up" data-aos-delay="200">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -655,10 +721,10 @@
                 <div class="tech-stack">
                     <span>Laravel</span><span>MySQL</span><span>Redis</span>
                 </div>
-            </div>
+            </a>
 
             <!-- Project 3 -->
-            <div class="systech-card project-item" data-category="php" data-aos="fade-up" data-aos-delay="300">
+            <a class="systech-card project-item" href="https://github.com/jihadprakoso/Marketplace" target="_blank" rel="noopener noreferrer" aria-label="View Marketplace Core source on GitHub" data-category="php" data-aos="fade-up" data-aos-delay="300">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -674,10 +740,10 @@
                 <div class="tech-stack">
                     <span>CodeIgniter 3</span><span>PHP</span><span>Bootstrap</span>
                 </div>
-            </div>
+            </a>
 
             <!-- Project 4 -->
-            <div class="systech-card project-item" data-category="php" data-aos="fade-up" data-aos-delay="400">
+            <a class="systech-card project-item" href="https://github.com/jihadprakoso/StockBarang" target="_blank" rel="noopener noreferrer" aria-label="View Warehouse WMS source on GitHub" data-category="php" data-aos="fade-up" data-aos-delay="400">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -695,10 +761,10 @@
                 <div class="tech-stack">
                     <span>PHP Native</span><span>MySQL</span><span>Vanilla JS</span>
                 </div>
-            </div>
+            </a>
 
             <!-- Project 5 -->
-            <div class="systech-card project-item" data-category="js design" data-aos="fade-up" data-aos-delay="100">
+            <a class="systech-card project-item" href="https://github.com/jihadprakoso/Static" target="_blank" rel="noopener noreferrer" aria-label="View Company Profile source on GitHub" data-category="js design" data-aos="fade-up" data-aos-delay="100">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -714,10 +780,10 @@
                 <div class="tech-stack">
                     <span>HTML5</span><span>CSS3</span><span>Vanilla JS</span>
                 </div>
-            </div>
+            </a>
 
             <!-- Project 6 -->
-            <div class="systech-card project-item" data-category="php design" data-aos="fade-up" data-aos-delay="200">
+            <a class="systech-card project-item" href="https://github.com/jihadprakoso/WP-Elementor" target="_blank" rel="noopener noreferrer" aria-label="View WordPress Architecture source on GitHub" data-category="php design" data-aos="fade-up" data-aos-delay="200">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -734,10 +800,10 @@
                 <div class="tech-stack">
                     <span>WordPress</span><span>PHP</span><span>MySQL</span>
                 </div>
-            </div>
+            </a>
 
             <!-- Project 7 -->
-            <div class="systech-card project-item" data-category="design" data-aos="fade-up" data-aos-delay="300">
+            <a class="systech-card project-item" href="https://github.com/jihadprakoso/UI-Design" target="_blank" rel="noopener noreferrer" aria-label="View UI/UX Design System source on GitHub" data-category="design" data-aos="fade-up" data-aos-delay="300">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -752,10 +818,10 @@
                 <div class="tech-stack">
                     <span>Figma</span><span>Design System</span>
                 </div>
-            </div>
+            </a>
 
             <!-- Project 8 -->
-            <div class="systech-card project-item" data-category="php" data-aos="fade-up" data-aos-delay="400">
+            <a class="systech-card project-item" href="https://github.com/jihadprakoso/Dynamic" target="_blank" rel="noopener noreferrer" aria-label="View Inventory Tracking source on GitHub" data-category="php" data-aos="fade-up" data-aos-delay="400">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -771,7 +837,7 @@
                 <div class="tech-stack">
                     <span>PHP Native</span><span>Bootstrap 4</span>
                 </div>
-            </div>
+            </a>
 
         </div>
     </section>
@@ -831,13 +897,26 @@
                     <div style="border-left: 1px solid var(--text-muted); position: relative; padding-left: 30px; margin-left: 10px;"
                         class="d-flex flex-column gap-5">
 
+                        <!-- Edu Item 0 -->
+                        <div style="position: relative;">
+                            <div
+                                style="position: absolute; left: -36px; top: 0; width: 11px; height: 11px; background: var(--bg-base); border: 2px solid var(--text-muted); border-radius: 50%;">
+                            </div>
+                            <span class="font-mono text-muted d-block mb-1" style="font-size: 0.8rem;">2026 - Present</span>
+                            <h4 class="mb-1">Informatika</h4>
+                            <p class="text-muted font-mono mb-2" style="font-size: 0.85rem;">[ Universitas Telkom ]
+                            </p>
+                            <p class="text-muted mb-0" style="font-size: 0.95rem;">Program Studi S1 Informatika.
+                                focuses on software development, programming, algorithms, databases, artificial intelligence, and computer networks. </p>
+                        </div>
+                        
                         <!-- Edu Item 1 -->
                         <div style="position: relative;">
                             <div
                                 style="position: absolute; left: -36px; top: 0; width: 11px; height: 11px; background: var(--bg-base); border: 2px solid var(--text-muted); border-radius: 50%;">
                             </div>
                             <span class="font-mono text-muted d-block mb-1" style="font-size: 0.8rem;">2017 –
-                                2021</span>
+                                2021 - Withdrew from University</span>
                             <h4 class="mb-1">Teknik Lingkungan</h4>
                             <p class="text-muted font-mono mb-2" style="font-size: 0.85rem;">[ Universitas Brawijaya ]
                             </p>
@@ -882,39 +961,47 @@
         </div>
     </section>
 
-    <footer style="border-top: 1px solid var(--border-dim); padding: 40px 0; margin-top: 20px;">
-        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-            <div class="font-mono text-muted text-center text-md-start" style="font-size: 0.8rem;">
-                © 2026 JIHAD.SYS // ALL SYSTEMS
+    <footer class="systech-footer">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+            <div class="d-flex flex-column flex-sm-row align-items-center gap-2 text-center text-md-start">
+                <span class="font-mono text-muted" style="font-size: 0.8rem;">
+                    © <span id="current-year">2026</span> JIHAD.SYS // ALL SYSTEMS
+                </span>
+                <span class="server-status-pill font-mono">
+                    <span class="pulse-dot"></span> 99.9% UPTIME
+                </span>
             </div>
-            <div class="d-flex flex-wrap justify-content-center gap-2 mt-3 mt-md-0 font-mono"
-                style="font-size: 0.75rem;">
-                <a href="https://github.com/jihadprakoso" target="_blank"
-                    style="color: var(--text-muted); text-decoration: none; transition: 0.2s;"
-                    onmouseover="this.style.color='var(--text-main)'"
-                    onmouseout="this.style.color='var(--text-muted)'">[ GITHUB ]</a>
-                <a href="https://www.linkedin.com/in/jihad-prakoso/" target="_blank"
-                    style="color: var(--text-muted); text-decoration: none; transition: 0.2s;"
-                    onmouseover="this.style.color='var(--text-main)'"
-                    onmouseout="this.style.color='var(--text-muted)'">[ LINKEDIN ]</a>
-                <a href="mailto:jihadprakoso@gmail.com"
-                    style="color: var(--text-muted); text-decoration: none; transition: 0.2s;"
-                    onmouseover="this.style.color='var(--text-main)'"
-                    onmouseout="this.style.color='var(--text-muted)'">[ EMAIL ]</a>
-                <a href="https://wa.me/6285773837959" target="_blank"
-                    style="color: var(--text-muted); text-decoration: none; transition: 0.2s;"
-                    onmouseover="this.style.color='var(--text-main)'"
-                    onmouseout="this.style.color='var(--text-muted)'">[ WHATSAPP ]</a>
-                <a href="https://instagram.com/____jeey" target="_blank"
-                    style="color: var(--text-muted); text-decoration: none; transition: 0.2s;"
-                    onmouseover="this.style.color='var(--text-main)'"
-                    onmouseout="this.style.color='var(--text-muted)'">[ INSTAGRAM ]</a>
+            <div class="d-flex flex-wrap justify-content-center gap-2 font-mono">
+                <a href="https://github.com/jihadprakoso" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="GitHub Profile">
+                    <i class="fa-brands fa-github"></i> GITHUB
+                </a>
+                <a href="https://www.linkedin.com/in/jihad-prakoso/" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin" style="color: #38bdf8;"></i> LINKEDIN
+                </a>
+                <a href="mailto:jihadprakoso@gmail.com" class="footer-social-link" title="Send Email">
+                    <i class="fa-solid fa-envelope" style="color: var(--accent);"></i> EMAIL
+                </a>
+                <a href="https://wa.me/6285773837959" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="WhatsApp Chat">
+                    <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> WHATSAPP
+                </a>
+                <a href="https://instagram.com/____jeey" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Instagram Profile">
+                    <i class="fa-brands fa-instagram" style="color: #f43f5e;"></i> INSTAGRAM
+                </a>
+                <a href="#engineering" class="footer-social-link" title="Scroll to Top">
+                    <i class="fa-solid fa-arrow-up"></i> TOP
+                </a>
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Set dynamic copyright year
+        const currentYearEl = document.getElementById('current-year');
+        if (currentYearEl) {
+            currentYearEl.textContent = new Date().getFullYear();
+        }
+
         // Initialize AOS animations
         AOS.init({
             duration: 800,
