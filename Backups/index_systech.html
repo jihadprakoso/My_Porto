@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jihad | SysTech Engineering</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #050505;
+            --bg-surface: #111111;
+            --bg-card: #161616;
+            --border-dim: #222222;
+            --border-glow: #3b82f6; /* Blueish */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-gradient: linear-gradient(135deg, #38bdf8, #818cf8);
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-base); 
+            color: var(--text-main); 
+            line-height: 1.6;
+            /* Subtle dot grid background */
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        h1, h2, h3, h4, .font-display { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.5px; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+
+        .text-gradient {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Navigation */
+        .systech-nav {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-dim);
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .systech-nav .brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .systech-nav .brand::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .systech-nav a.nav-link {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        
+        .systech-nav a.nav-link:hover { color: var(--text-main); }
+
+        /* Hero */
+        .hero {
+            padding: 120px 0 80px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hero h1 { font-size: 4rem; font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero p { color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin-bottom: 2.5rem; }
+
+        /* Buttons */
+        .btn-systech {
+            background: var(--text-main);
+            color: var(--bg-base);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-systech:hover { background: #e2e8f0; }
+
+        .btn-systech-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-dim);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .btn-systech-outline:hover {
+            border-color: var(--text-muted);
+            background: var(--bg-surface);
+        }
+
+        /* Status Badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 50px;
+            color: #10b981;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+        }
+
+        /* Cards */
+        .systech-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            padding: 24px;
+            height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .systech-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .systech-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5), 0 0 20px rgba(56, 189, 248, 0.05);
+        }
+
+        .systech-card:hover::before { opacity: 1; }
+
+        .systech-card h3 { font-size: 1.25rem; margin-bottom: 12px; }
+        .systech-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px; }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .tech-stack span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--bg-surface);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--border-dim);
+        }
+
+        /* Grid specific for layout */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+    </style>
+</head>
+<body>
+
+<nav class="systech-nav">
+    <div class="container d-flex justify-content-between align-items-center">
+        <a href="#" class="brand">jihad.sys</a>
+        <div class="d-none d-md-flex gap-4">
+            <a href="#engineering" class="nav-link font-mono">01. Engineering</a>
+            <a href="#systems" class="nav-link font-mono">02. Systems</a>
+            <a href="#contact" class="nav-link font-mono">03. Contact</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero container">
+    <div class="status-badge">
+        <div class="status-dot"></div> System Online & Ready for Deployment
+    </div>
+    
+    <h1>Engineering digital <br> <span class="text-gradient">infrastructure.</span></h1>
+    <p>
+        Saya Jihad, seorang Full Stack Engineer. Saya membangun arsitektur web yang modern, aman, dan dapat diskalakan—mulai dari antarmuka berbasis React hingga sistem backend monolitik maupun microservices.
+    </p>
+    
+    <div class="d-flex gap-3">
+        <a href="#systems" class="btn-systech">Deploy Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+        <a href="https://github.com" target="_blank" class="btn-systech-outline font-mono">&gt; view_github</a>
+    </div>
+</section>
+
+<section id="systems" class="container" style="padding: 60px 0 100px;">
+    <h2 class="mb-2">Deployed Systems</h2>
+    <p class="text-muted font-mono mb-4">// Production-ready applications</p>
+    
+    <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="systech-card">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                <span class="font-mono text-muted" style="font-size: 0.75rem;">v2.1.0</span>
+            </div>
+            <h3>Trading Analysis AI</h3>
+            <p>Sistem dashboard analitik real-time yang memanfaatkan websocket dan Gemini AI untuk visualisasi data pasar bursa secara live.</p>
+            <div class="tech-stack">
+                <span>React 19</span><span>TypeScript</span><span>Vite</span><span>Gemini API</span>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="systech-card">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <span class="font-mono text-muted" style="font-size: 0.75rem;">Enterprise</span>
+            </div>
+            <h3>Internal ERP System</h3>
+            <p>Arsitektur backend kompleks untuk manajemen SDM, absensi, dan payroll. Dirancang untuk stabilitas dan konsistensi data yang tinggi.</p>
+            <div class="tech-stack">
+                <span>Laravel</span><span>MySQL</span><span>Redis</span>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="systech-card">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span class="font-mono text-muted" style="font-size: 0.75rem;">v1.5.0</span>
+            </div>
+            <h3>JihadMarket Core</h3>
+            <p>Engine e-commerce multi-vendor. Mengelola transaksi silang, validasi sesi, dan manajemen inventori dalam skala besar.</p>
+            <div class="tech-stack">
+                <span>CodeIgniter 3</span><span>PHP</span><span>Bootstrap</span>
+            </div>
+        </div>
+        
+        <!-- Project 4 -->
+        <div class="systech-card">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                <span class="font-mono text-muted" style="font-size: 0.75rem;">Standalone</span>
+            </div>
+            <h3>Warehouse WMS</h3>
+            <p>Sistem manajemen gudang berkinerja tinggi yang dibangun secara native. Fokus pada latensi rendah untuk input/output data barang.</p>
+            <div class="tech-stack">
+                <span>PHP Native</span><span>MySQL</span><span>Vanilla JS</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer style="border-top: 1px solid var(--border-dim); padding: 40px 0; margin-top: 40px;">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div class="font-mono text-muted" style="font-size: 0.8rem;">
+            © 2024 JIHAD.SYS // ALL SYSTEMS NOMINAL
+        </div>
+        <div class="d-flex gap-3 mt-3 mt-md-0 font-mono" style="font-size: 0.8rem;">
+            <a href="#" style="color: var(--text-muted); text-decoration: none;">[ GITHUB ]</a>
+            <a href="#" style="color: var(--text-muted); text-decoration: none;">[ LINKEDIN ]</a>
+            <a href="#" style="color: var(--text-muted); text-decoration: none;">[ EMAIL ]</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

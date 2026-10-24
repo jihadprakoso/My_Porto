@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jihad - Full Stack Web Developer</title>
+    <meta name="description"
+        content="Personal portfolio of Jihad — a Full Stack Web Developer skilled in PHP, Laravel, CodeIgniter, WordPress, React Native, MySQL, and UI/UX Design.">
+    <meta property="og:title" content="Jihad - Full Stack Developer Portfolio">
+    <meta property="og:description"
+        content="Explore my projects spanning ERP systems, marketplaces, company profiles, and UI/UX design.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <style>
+        /* ================================
+           ROOT & RESET
+        ================================ */
+        :root {
+            --primary: #4F46E5;
+            --secondary: #0ea5e9;
+            --accent: #f43f5e;
+            --orange: #f97316;
+            --success: #10b981;
+            --dark: #0f172a;
+            --grad1: linear-gradient(135deg, #4F46E5 0%, #0ea5e9 100%);
+            --grad2: linear-gradient(135deg, #f43f5e 0%, #f97316 100%);
+            --grad3: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+            --grad-dark: linear-gradient(135deg, #1e1b4b 0%, #4F46E5 100%);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            color: #334155;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* ================================
+           UTILITIES
+        ================================ */
+        .text-gradient {
+            background: var(--grad1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-gradient-accent {
+            background: var(--grad2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .fw-black {
+            font-weight: 900 !important;
+        }
+
+        .py-section {
+            padding: 100px 0;
+        }
+
+        .relative-z {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ================================
+           TOP NAVBAR (Glassmorphism)
+        ================================ */
+        #top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        #top-nav.scrolled {
+            padding: 0.7rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-brand span {
+            background: var(--grad1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin: 0;
+        }
+
+        .nav-menu a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary);
+            background: rgba(79, 70, 229, 0.08);
+        }
+
+        .nav-social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-social a {
+            width: 36px;
+            height: 36px;
+            background: #f1f5f9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .nav-social a:hover {
+            background: var(--grad1);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile hamburger */
+        #nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Menu Overlay */
+        #mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            z-index: 1001;
+            padding: 2rem;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-close {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-nav-menu {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-nav-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #475569;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .mobile-nav-menu a i {
+            width: 24px;
+            text-align: center;
+        }
+
+        .mobile-nav-menu a.active {
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+        }
+
+        /* ================================
+           MAIN CONTENT
+        ================================ */
+        /* #main-content no longer needs margin for top nav */
+
+        /* ================================
+           HERO
+        ================================ */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: #f8fafc;
+            padding-top: 80px;
+            /* Offset for fixed nav */
+        }
+
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.55;
+        }
+
+        .blob-a {
+            width: 600px;
+            height: 600px;
+            background: var(--grad1);
+            top: -150px;
+            right: -150px;
+        }
+
+        .blob-b {
+            width: 350px;
+            height: 350px;
+            background: var(--grad2);
+            bottom: -80px;
+            left: -60px;
+        }
+
+        .blob-c {
+            width: 200px;
+            height: 200px;
+            background: var(--grad3);
+            bottom: 30%;
+            left: 30%;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(79, 70, 229, 0.1);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            border-radius: 50px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge span {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0.4
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .typed-wrapper {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            min-height: 40px;
+        }
+
+        .typed-cursor {
+            color: var(--primary);
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: #64748b;
+            line-height: 1.8;
+            max-width: 540px;
+            margin-bottom: 2rem;
+        }
+
+        .btn-grad {
+            background: var(--grad1);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 32px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-grad:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(79, 70, 229, 0.35);
+        }
+
+        .btn-outline-dark-custom {
+            border: 2px solid #334155;
+            color: #334155;
+            border-radius: 50px;
+            padding: 11px 28px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-outline-dark-custom:hover {
+            background: #334155;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            max-width: 360px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .profile-avatar {
+            width: 90px;
+            height: 90px;
+            background: var(--grad1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            margin: 0 auto 1rem;
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--grad1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .floating-chip {
+            position: absolute;
+            background: white;
+            border-radius: 50px;
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: floatChip 4s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .chip-1 {
+            top: 10px;
+            left: -30px;
+            color: var(--primary);
+            animation-delay: 0s;
+        }
+
+        .chip-2 {
+            bottom: 40px;
+            right: -20px;
+            color: var(--accent);
+            animation-delay: 2s;
+        }
+
+        @keyframes floatChip {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-10px)
+            }
+        }
+
+        /* ================================
+           SECTION HEADERS
+        ================================ */
+        .section-eyebrow {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: #64748b;
+            font-size: 1rem;
+            max-width: 550px;
+        }
+
+        /* ================================
+           ABOUT
+        ================================ */
+        .about-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1.25rem;
+        }
+
+        .about-info-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(79, 70, 229, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* ================================
+           SKILLS
+        ================================ */
+        .skill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #334155;
+            transition: all 0.2s;
+        }
+
+        .skill-badge:hover {
+            background: rgba(79, 70, 229, 0.08);
+            border-color: rgba(79, 70, 229, 0.3);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .skill-badge i {
+            font-size: 1.1rem;
+        }
+
+        /* ================================
+           PROJECTS
+        ================================ */
+        .project-card {
+            background: white;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+            border: 1px solid #f1f5f9;
+            transition: all 0.35s ease;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            border-color: rgba(79, 70, 229, 0.15);
+        }
+
+        .project-thumb {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-thumb::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.15;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 3px 10px;
+            border-radius: 50px;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+        }
+
+        .project-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+
+        .project-desc {
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .tech-chip {
+            font-size: 0.68rem;
+            font-weight: 600;
+            background: #f1f5f9;
+            color: #475569;
+            border-radius: 50px;
+            padding: 3px 10px;
+        }
+
+        /* ================================
+           EXPERIENCE TIMELINE
+        ================================ */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .timeline-dot {
+            width: 42px;
+            height: 42px;
+            background: var(--grad1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        .timeline-body {
+            flex: 1;
+        }
+
+        .timeline-year {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-place {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* ================================
+           CONTACT
+        ================================ */
+        .contact-card {
+            background: var(--dark);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--grad1);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.25;
+            top: -100px;
+            right: -100px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: background 0.2s;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--grad1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        /* ================================
+           FOOTER
+        ================================ */
+        .site-footer {
+            background: #0f172a;
+            color: #64748b;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+        }
+
+        /* ================================
+           RESPONSIVE
+        ================================ */
+        @media (max-width: 991px) {
+
+            .nav-menu,
+            .nav-social {
+                display: none;
+            }
+
+            #nav-toggle {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-card {
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================================
+     TOP NAVIGATION
+================================ -->
+    <nav id="top-nav">
+        <div class="container nav-container">
+            <a href="#hero" class="nav-brand">J<span>D</span></a>
+
+            <ul class="nav-menu">
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="d-none d-lg-flex align-items-center gap-3">
+                <div class="nav-social">
+                    <a href="https://github.com/" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <a href="#contact" class="btn-grad px-4 py-2" style="font-size: 0.9rem;">Hire Me</a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="nav-toggle" onclick="toggleNav()"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu">
+        <button class="mobile-close" onclick="closeNav()"><i class="fa-solid fa-xmark"></i></button>
+        <ul class="mobile-nav-menu">
+            <li><a href="#hero" class="active" onclick="closeNav()"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="#about" onclick="closeNav()"><i class="fa-solid fa-user"></i> About</a></li>
+            <li><a href="#skills" onclick="closeNav()"><i class="fa-solid fa-code"></i> Skills</a></li>
+            <li><a href="#projects" onclick="closeNav()"><i class="fa-solid fa-briefcase"></i> Projects</a></li>
+            <li><a href="#experience" onclick="closeNav()"><i class="fa-solid fa-timeline"></i> Experience</a></li>
+            <li><a href="#contact" onclick="closeNav()"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+        </ul>
+        <div class="nav-social mt-4 justify-content-center">
+            <a href="https://github.com/" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/62" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </div>
+
+    <!-- ================================
+     MAIN CONTENT
+================================ -->
+    <div id="main-content">
+
+        <!-- ===== HERO ===== -->
+        <section id="hero">
+            <div class="hero-blob blob-a"></div>
+            <div class="hero-blob blob-b"></div>
+            <div class="hero-blob blob-c"></div>
+            <div class="container relative-z py-5">
+                <div class="row align-items-center min-vh-100 g-5 py-5">
+                    <div class="col-lg-7" data-aos="fade-up">
+                        <div class="hero-badge">
+                            <span></span> Open to Work
+                        </div>
+                        <h1 class="hero-title">
+                            Hi, I'm <span class="text-gradient">Jihad</span>
+                        </h1>
+                        <div class="typed-wrapper">
+                            <span id="typed-text"></span>
+                        </div>
+                        <p class="hero-desc">
+                            A passionate <strong>Full Stack Web Developer</strong> from Indonesia, specializing in
+                            building dynamic web applications, ERP systems, marketplaces, and beautiful UI/UX designs.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#projects" class="btn-grad"><i class="fa-solid fa-briefcase me-2"></i>View My
+                                Projects</a>
+                            <a href="#contact" class="btn-outline-dark-custom"><i
+                                    class="fa-solid fa-paper-plane me-2"></i>Contact Me</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-5" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="position-relative">
+                            <div class="hero-card">
+                                <div class="profile-avatar">JD</div>
+                                <h4 class="text-center fw-bold mb-1">Jihad Dev</h4>
+                                <p class="text-center text-muted small mb-0">Full Stack Web Developer</p>
+                                <p class="text-center small mb-3" style="color:#10b981">📍 Indonesia</p>
+                                <div class="progress rounded-pill mb-2" style="height:6px">
+                                    <div class="progress-bar" style="width:90%;background:var(--grad1)"></div>
+                                </div>
+                                <small class="text-muted d-flex justify-content-between"><span>PHP / Laravel /
+                                        CI3</span><span>90%</span></small>
+                                <div class="progress rounded-pill mb-2 mt-2" style="height:6px">
+                                    <div class="progress-bar" style="width:85%;background:var(--grad2)"></div>
+                                </div>
+                                <small class="text-muted d-flex justify-content-between"><span>HTML / CSS / JS /
+                                        Bootstrap</span><span>85%</span></small>
+                                <div class="progress rounded-pill mb-2 mt-2" style="height:6px">
+                                    <div class="progress-bar" style="width:75%;background:var(--grad3)"></div>
+                                </div>
+                                <small class="text-muted d-flex justify-content-between"><span>WordPress / React
+                                        Native</span><span>75%</span></small>
+                                <div class="stat-grid border-top mt-3 pt-3">
+                                    <div class="stat-item">
+                                        <div class="stat-num">8+</div>
+                                        <div class="stat-label">Projects</div>
+                                    </div>
+                                    <div class="stat-item border-start border-end">
+                                        <div class="stat-num">5+</div>
+                                        <div class="stat-label">Stacks</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-num">1+</div>
+                                        <div class="stat-label">Years</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="floating-chip chip-1">🚀 Laravel ERP</div>
+                            <div class="floating-chip chip-2">🎨 UI/UX Design</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT ===== -->
+        <section id="about" class="py-section bg-white">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-5" data-aos="fade-right">
+                        <span class="section-eyebrow">Who I Am</span>
+                        <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+                        <p class="text-muted mb-4" style="line-height:1.9">
+                            I'm a dedicated Full Stack Web Developer with a strong passion for building clean, scalable,
+                            and user-friendly digital solutions. I enjoy working across the entire stack — from crafting
+                            elegant frontends to architecting robust backends and databases.
+                        </p>
+                        <p class="text-muted" style="line-height:1.9">
+                            My portfolio spans multiple technology stacks including native PHP, Laravel, CodeIgniter 3,
+                            WordPress, and modern frontend frameworks — each chosen specifically to best fit the
+                            project's requirements.
+                        </p>
+                        <a href="#projects" class="btn-grad mt-4 d-inline-block"><i
+                                class="fa-solid fa-rocket me-2"></i>See My Work</a>
+                    </div>
+                    <div class="col-lg-6 offset-lg-1" data-aos="fade-left" data-aos-delay="200">
+                        <div class="about-info-item">
+                            <div class="about-info-icon"><i class="fa-solid fa-user"></i></div>
+                            <div>
+                                <p class="fw-bold mb-0">Full Name</p>
+                                <p class="text-muted mb-0">Jihad</p>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <div class="about-info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <p class="fw-bold mb-0">Location</p>
+                                <p class="text-muted mb-0">Indonesia</p>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <div class="about-info-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                            <div>
+                                <p class="fw-bold mb-0">Role</p>
+                                <p class="text-muted mb-0">Full Stack Web Developer</p>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <div class="about-info-icon"><i class="fa-solid fa-database"></i></div>
+                            <div>
+                                <p class="fw-bold mb-0">Database</p>
+                                <p class="text-muted mb-0">MySQL (phpMyAdmin via XAMPP)</p>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <div class="about-info-icon"><i class="fa-solid fa-check-circle"></i></div>
+                            <div>
+                                <p class="fw-bold mb-0">Availability</p>
+                                <p class="text-muted mb-0" style="color:#10b981;font-weight:600">✅ Open to Opportunities
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SKILLS ===== -->
+        <section id="skills" class="py-section bg-light">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <span class="section-eyebrow">Tech Stack</span>
+                    <h2 class="section-title">My <span class="text-gradient">Skills</span></h2>
+                    <p class="section-desc mx-auto">Technologies I work with to bring ideas to life.</p>
+                </div>
+                <div class="row g-5">
+                    <!-- Backend -->
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                        <h5 class="fw-bold mb-3" style="border-bottom:3px solid var(--primary);padding-bottom:.5rem">⚙️
+                            Backend</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="skill-badge"><i class="fa-brands fa-php text-primary"></i> PHP Native</span>
+                            <span class="skill-badge"><i class="fa-solid fa-leaf text-success"></i> Laravel</span>
+                            <span class="skill-badge"><i class="fa-solid fa-fire" style="color:#e44d26"></i> CodeIgniter
+                                3</span>
+                            <span class="skill-badge"><i class="fa-brands fa-wordpress text-primary"></i>
+                                WordPress</span>
+                            <span class="skill-badge"><i class="fa-solid fa-database text-warning"></i> MySQL</span>
+                        </div>
+                    </div>
+                    <!-- Frontend -->
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                        <h5 class="fw-bold mb-3" style="border-bottom:3px solid var(--secondary);padding-bottom:.5rem">
+                            🎨 Frontend</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="skill-badge"><i class="fa-brands fa-html5" style="color:#e44d26"></i>
+                                HTML5</span>
+                            <span class="skill-badge"><i class="fa-brands fa-css3-alt" style="color:#264de4"></i>
+                                CSS3</span>
+                            <span class="skill-badge"><i class="fa-brands fa-js" style="color:#f0db4f"></i>
+                                JavaScript</span>
+                            <span class="skill-badge"><i class="fa-brands fa-bootstrap" style="color:#7952b3"></i>
+                                Bootstrap 5</span>
+                            <span class="skill-badge"><i class="fa-brands fa-react text-info"></i> React 19</span>
+                            <span class="skill-badge"><i class="fa-solid fa-code" style="color:#3178c6"></i>
+                                TypeScript</span>
+                            <span class="skill-badge"><i class="fa-solid fa-bolt text-warning"></i> Vite</span>
+                            <span class="skill-badge"><i class="fa-brands fa-react text-info"></i> React Native</span>
+                        </div>
+                    </div>
+                    <!-- Tools -->
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                        <h5 class="fw-bold mb-3" style="border-bottom:3px solid var(--accent);padding-bottom:.5rem">🛠️
+                            Tools & Design</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="skill-badge"><i class="fa-brands fa-figma" style="color:#f24e1e"></i>
+                                Figma</span>
+                            <span class="skill-badge"><i class="fa-brands fa-github"></i> GitHub</span>
+                            <span class="skill-badge"><i class="fa-solid fa-server text-success"></i> XAMPP</span>
+                            <span class="skill-badge"><i class="fa-solid fa-robot text-primary"></i> Gemini AI
+                                API</span>
+                            <span class="skill-badge"><i class="fa-solid fa-palette text-primary"></i> UI/UX
+                                Design</span>
+                            <span class="skill-badge"><i class="fa-solid fa-terminal"></i> CLI / Artisan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROJECTS ===== -->
+        <section id="projects" class="py-section bg-white">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <span class="section-eyebrow">My Work</span>
+                    <h2 class="section-title">Portfolio <span class="text-gradient">Projects</span></h2>
+                    <p class="section-desc mx-auto">A collection of web applications and systems I've built, each
+                        showcasing a different part of my tech stack.</p>
+                </div>
+                <div class="row g-4">
+
+                    <!-- 1. Dinamic (Stockbarang) -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-card">
+                            <div class="project-thumb" style="background:linear-gradient(135deg,#1e1b4b,#4F46E5)">
+                                <span>📦</span>
+                            </div>
+                            <div class="project-body">
+                                <span class="project-tag"
+                                    style="background:rgba(79,70,229,0.1);color:var(--primary)">Dynamic Web</span>
+                                <h4 class="project-title">Stockbarang — Inventory System</h4>
+                                <p class="project-desc">A complete inventory management system with login, CRUD items,
+                                    stock-in/out transactions, and a real-time dashboard. Built with pure PHP OOP and
+                                    PDO for secure SQL interactions.</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="tech-chip">PHP Native</span>
+                                    <span class="tech-chip">PDO</span>
+                                    <span class="tech-chip">MySQL</span>
+                                    <span class="tech-chip">Bootstrap 5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. ERP -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+                        <div class="project-card">
+                            <div class="project-thumb" style="background:linear-gradient(135deg,#065f46,#10b981)">
+                                <span>🏢</span>
+                            </div>
+                            <div class="project-body">
+                                <span class="project-tag" style="background:rgba(16,185,129,0.1);color:#059669">ERP
+                                    System</span>
+                                <h4 class="project-title">Mini ERP — HR & Sales</h4>
+                                <p class="project-desc">A Laravel-powered Mini ERP with Employee Management, Payroll
+                                    Calculator with printable payslips, and Sales Order tracking. Uses Eloquent ORM and
+                                    Blade templating.</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="tech-chip">Laravel</span>
+                                    <span class="tech-chip">Eloquent ORM</span>
+                                    <span class="tech-chip">MySQL</span>
+                                    <span class="tech-chip">Bootstrap 5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Marketplace -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-card">
+                            <div class="project-thumb" style="background:linear-gradient(135deg,#92400e,#f97316)">
+                                <span>🛒</span>
+                            </div>
+                            <div class="project-body">
+                                <span class="project-tag"
+                                    style="background:rgba(249,115,22,0.1);color:#ea580c">Marketplace</span>
+                                <h4 class="project-title">JihadMarket — Multi-Vendor</h4>
+                                <p class="project-desc">A full multi-vendor marketplace built on CodeIgniter 3 with
+                                    Admin, Seller (store & product CRUD), and Buyer roles. Features a session-based
+                                    cart, checkout, and order history.</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="tech-chip">CodeIgniter 3</span>
+                                    <span class="tech-chip">PHP</span>
+                                    <span class="tech-chip">MySQL</span>
+                                    <span class="tech-chip">Bootstrap 5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Static Company Profile -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
+                        <div class="project-card">
+                            <div class="project-thumb" style="background:linear-gradient(135deg,#0c4a6e,#0ea5e9)">
+                                <span>🌐</span>
+                            </div>
+                            <div class="project-body">
+                                <span class="project-tag" style="background:rgba(14,165,233,0.1);color:#0284c7">Static
+                                    Web</span>
+                                <h4 class="project-title">NexusTech — Company Profile</h4>
+                                <p class="project-desc">A premium single-page company profile for a Tech Startup
+                                    featuring a vivid gradient hero, glassmorphism cards, AOS scroll animations, and a
+                                    fully responsive design.</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="tech-chip">HTML5</span>
+                                    <span class="tech-chip">CSS3</span>
+                                    <span class="tech-chip">Vanilla JS</span>
+                                    <span class="tech-chip">Bootstrap 5</span>
+                                    <span class="tech-chip">AOS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. WordPress -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="project-card">
+                            <div class="project-thumb" style="background:linear-gradient(135deg,#1d4ed8,#7c3aed)">
+                                <span>📝</span>
+                            </div>
+                            <div class="project-body">
+                                <span class="project-tag"
+                                    style="background:rgba(124,58,237,0.1);color:#7c3aed">WordPress</span>
+                                <h4 class="project-title">Jihad WP Theme — Custom Blog</h4>
+                                <p class="project-desc">A custom WordPress blog theme built from scratch, featuring a
+                                    Bootstrap 5 layout, dynamic sidebar with categories and recent posts, and proper WP
+                                    template hierarchy integration.</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="tech-chip">WordPress</span>
+                                    <span class="tech-chip">PHP</span>
+                                    <span class="tech-chip">Bootstrap 5</span>
+                                    <span class="tech-chip">Custom Theme</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. UI & Design -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="350">
+                        <div class="project-card">
+                            <div class="project-thumb" style="background:linear-gradient(135deg,#831843,#f43f5e)">
+                                <span>🎨</span>
+                            </div>
+                            <div class="project-body">
+                                <span class="project-tag" style="background:rgba(244,63,94,0.1);color:#e11d48">UI/UX
+                                    Design</span>
+                                <h4 class="project-title">UI Kit — Design System Showcase</h4>
+                                <p class="project-desc">A comprehensive design system showcase featuring color palettes,
+                                    typography scales, UI components (buttons, badges, cards, alerts), a dark admin
+                                    dashboard, and 3 mobile app UI mockups.</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="tech-chip">HTML5</span>
+                                    <span class="tech-chip">CSS3</span>
+                                    <span class="tech-chip">Figma-style</span>
+                                    <span class="tech-chip">Bootstrap 5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7. Trading Analysis -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="project-card">
+                            <div class="project-thumb" style="background:linear-gradient(135deg,#064e3b,#10b981)">
+                                <span>📈</span>
+                            </div>
+                            <div class="project-body">
+                                <span class="project-tag" style="background:rgba(16,185,129,0.1);color:#059669">AI &amp;
+                                    Analytics</span>
+                                <h4 class="project-title">Trading Analysis — AI Dashboard</h4>
+                                <p class="project-desc">A real-time trading analysis dashboard powered by <strong>Gemini
+                                        AI API</strong>. Features live candlestick charts, market data visualization,
+                                    and AI-generated trading insights. Built with React 19, TypeScript, and WebSocket
+                                    for real-time data streaming.</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="tech-chip">React 19</span>
+                                    <span class="tech-chip">TypeScript</span>
+                                    <span class="tech-chip">Vite</span>
+                                    <span class="tech-chip">Gemini AI</span>
+                                    <span class="tech-chip">WebSocket</span>
+                                    <span class="tech-chip">Tailwind CSS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 8. StockBarang -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="450">
+                        <div class="project-card">
+                            <div class="project-thumb" style="background:linear-gradient(135deg,#1e3a5f,#2563eb)">
+                                <span>🗃️</span>
+                            </div>
+                            <div class="project-body">
+                                <span class="project-tag" style="background:rgba(37,99,235,0.1);color:#2563eb">Dynamic
+                                    Web</span>
+                                <h4 class="project-title">StockBarang — Warehouse System</h4>
+                                <p class="project-desc">A standalone warehouse management system for tracking stock
+                                    items, recording goods in/out (masuk/keluar), and managing inventory data. Built
+                                    with PHP Native featuring a clean UI and session-based authentication.</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="tech-chip">PHP Native</span>
+                                    <span class="tech-chip">MySQL</span>
+                                    <span class="tech-chip">Bootstrap</span>
+                                    <span class="tech-chip">JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== EXPERIENCE ===== -->
+        <section id="experience" class="py-section" style="background:#f8fafc">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-5" data-aos="fade-right">
+                        <span class="section-eyebrow">Journey</span>
+                        <h2 class="section-title">Education & <span class="text-gradient">Experience</span></h2>
+                        <p class="text-muted" style="line-height:1.9">A chronological overview of my academic background
+                            and professional development journey as a developer.</p>
+                    </div>
+                    <div class="col-lg-7" data-aos="fade-left" data-aos-delay="200">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"><i class="fa-solid fa-code"></i></div>
+                                <div class="timeline-body">
+                                    <p class="timeline-year">2024 – Present</p>
+                                    <h5 class="timeline-title">Full Stack Web Developer</h5>
+                                    <p class="timeline-place">Freelance / Self-Employed</p>
+                                    <p class="timeline-desc">Building web applications ranging from dynamic inventory
+                                        systems and ERP platforms to multi-vendor marketplaces and custom WordPress
+                                        themes using PHP, Laravel, CI3, and MySQL.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot" style="background:var(--grad2)"><i
+                                        class="fa-solid fa-palette"></i></div>
+                                <div class="timeline-body">
+                                    <p class="timeline-year">2023 – 2024</p>
+                                    <h5 class="timeline-title">UI/UX Design & Frontend Development</h5>
+                                    <p class="timeline-place">Learning & Practice</p>
+                                    <p class="timeline-desc">Mastered Figma for UI design and prototyping. Built
+                                        responsive frontends using Bootstrap 5, HTML5, CSS3, and Vanilla JS. Started
+                                        exploring React Native for mobile development.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot" style="background:var(--grad3)"><i
+                                        class="fa-solid fa-graduation-cap"></i></div>
+                                <div class="timeline-body">
+                                    <p class="timeline-year">2020 – 2023</p>
+                                    <h5 class="timeline-title">Informatics / Computer Science</h5>
+                                    <p class="timeline-place">University / Vocational School</p>
+                                    <p class="timeline-desc">Studied programming fundamentals, database design, web
+                                        technologies, and software engineering methodologies. Built first projects using
+                                        PHP and MySQL.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT ===== -->
+        <section id="contact" class="py-section bg-white">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <span class="section-eyebrow">Get in Touch</span>
+                    <h2 class="section-title">Let's <span class="text-gradient">Connect</span></h2>
+                    <p class="section-desc mx-auto">Have a project in mind or want to collaborate? Feel free to reach
+                        out!</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="contact-card">
+                            <div class="row g-3 position-relative" style="z-index:2">
+                                <div class="col-md-6">
+                                    <div class="contact-item">
+                                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                                        <div>
+                                            <p class="text-white fw-bold mb-0 small">Email</p>
+                                            <p class="mb-0" style="color:#94a3b8;font-size:.85rem">
+                                                jihadprakoso@gmail.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="contact-item">
+                                        <div class="contact-icon" style="background:var(--grad3)"><i
+                                                class="fa-brands fa-whatsapp"></i></div>
+                                        <div>
+                                            <p class="text-white fw-bold mb-0 small">WhatsApp</p>
+                                            <p class="mb-0" style="color:#94a3b8;font-size:.85rem">+62 857-7383-7959</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="contact-item">
+                                        <div class="contact-icon" style="background:#1c1c1e"><i
+                                                class="fa-brands fa-github"></i></div>
+                                        <div>
+                                            <p class="text-white fw-bold mb-0 small">GitHub</p>
+                                            <p class="mb-0" style="color:#94a3b8;font-size:.85rem">
+                                                https://github.com/jihadprakoso</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="contact-item">
+                                        <div class="contact-icon"
+                                            style="background:linear-gradient(135deg,#0077b5,#00a0dc)"><i
+                                                class="fa-brands fa-linkedin"></i></div>
+                                        <div>
+                                            <p class="text-white fw-bold mb-0 small">LinkedIn</p>
+                                            <p class="mb-0" style="color:#94a3b8;font-size:.85rem">
+                                                www.linkedin.com/in/jihad-prakoso</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3 text-center">
+                                    <a href="mailto:jihadprakoso@gmail.com" class="btn-grad px-5"><i
+                                            class="fa-solid fa-paper-plane me-2"></i>Send Message</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <p class="mb-0">© 2026 <strong style="color:#a5b4fc">Jihad Dev</strong>. Built with ❤️ using HTML, CSS, JS &
+                Bootstrap 5. Deployed on GitHub Pages.</p>
+        </footer>
+
+    </div><!-- end main-content -->
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // AOS Init
+        AOS.init({ duration: 700, easing: 'ease-in-out', once: true, offset: 60 });
+
+        // Typed.js
+        new Typed('#typed-text', {
+            strings: [
+                'a Full Stack Developer',
+                'a PHP / Laravel Expert',
+                'a CodeIgniter 3 Developer',
+                'a WordPress Theme Builder',
+                'a UI/UX Designer',
+                'a React Native Developer'
+            ],
+            typeSpeed: 55,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true,
+            cursorChar: '|'
+        });
+
+        // Navbar Scroll Effect
+        const topNav = document.getElementById('top-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                topNav.classList.add('scrolled');
+            } else {
+                topNav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile nav
+        function toggleNav() {
+            document.getElementById('mobile-menu').classList.add('open');
+        }
+        function closeNav() {
+            document.getElementById('mobile-menu').classList.remove('open');
+        }
+
+        // Active nav on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinksDesktop = document.querySelectorAll('.nav-menu a');
+        const navLinksMobile = document.querySelectorAll('.mobile-nav-menu a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const top = section.offsetTop - 100;
+                if (window.scrollY >= top) current = section.getAttribute('id');
+            });
+
+            const updateLinks = (links) => {
+                links.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+                });
+            };
+
+            updateLinks(navLinksDesktop);
+            updateLinks(navLinksMobile);
+        });
+    </script>
+</body>
+
+</html>

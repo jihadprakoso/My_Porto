@@ -1,0 +1,13 @@
+# Sub-project punya repo GitHub masing-masing — jangan disertakan di repo ini
+Dinamic/
+StockBarang/
+Marketplace/
+ERP/
+Trading-Analysis/
+Wordpress/
+SEO-Landing/
+Static/
+UI & Design/
+
+# File sistem
+.DS_Store

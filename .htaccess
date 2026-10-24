@@ -1,0 +1,29 @@
+# ==========================================================================
+# My_Porto — Hardening untuk semua sub-project (Apache / XAMPP)
+# ==========================================================================
+# File ini melindungi SELURUH isi folder My_Porto dari akses langsung ke
+# berkas sensitif (kredensial, database mentah, riwayat git) dan dari
+# directory listing.
+# ==========================================================================
+
+# Matikan directory listing ("Index of /")
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Blokir folder .git (mencegah kebocoran source code & riwayat commit)
+    RewriteRule "(^|/)\.git" - [F,L]
+
+    # Blokir file kredensial .env (dan variannya), kecuali .env.example
+    RewriteRule "(^|/)\.env$" - [F,L]
+    RewriteRule "(^|/)\.env\.(local|production|development|staging|test)$" - [F,L]
+
+    # Blokir file database mentah (SQLite/SQL dump)
+    RewriteRule "\.(sqlite|sqlite3|sql|db|dump)$" - [F,L]
+</IfModule>
+
+# Blokir berkas meta sistem
+<FilesMatch "^\.(DS_Store|gitignore|gitattributes)$">
+    Require all denied
+</FilesMatch>

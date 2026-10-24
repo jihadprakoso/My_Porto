@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jihad - Portfolio (Minimalist)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #fdfdfc; color: #2c2c2c; line-height: 1.8; }
+        h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; color: #1a1a1a; }
+        
+        .nav-minimal { padding: 30px 0; }
+        .nav-minimal a { color: #555; text-decoration: none; margin: 0 15px; font-size: 0.9rem; letter-spacing: 1px; text-transform: lowercase; transition: 0.3s; }
+        .nav-minimal a:hover { color: #000; }
+        
+        .hero { padding: 120px 0; text-align: center; }
+        .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; letter-spacing: -1px; }
+        .hero p { font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto 40px; font-weight: 300; }
+        
+        .btn-outline { border: 1px solid #2c2c2c; color: #2c2c2c; padding: 12px 30px; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; border-radius: 0; }
+        .btn-outline:hover { background: #2c2c2c; color: #fff; }
+        
+        .section-title { font-size: 2rem; font-weight: 400; text-align: center; margin-bottom: 60px; position: relative; }
+        .section-title::after { content: ''; display: block; width: 40px; height: 1px; background: #ccc; margin: 20px auto 0; }
+        
+        .project-item { margin-bottom: 80px; }
+        .project-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #b3b3b3; font-style: italic; }
+        .project-title { font-size: 1.5rem; margin: 10px 0; font-weight: 700; }
+        .project-desc { color: #666; font-size: 0.95rem; font-weight: 300; }
+        .tech-list { list-style: none; padding: 0; display: flex; gap: 15px; font-size: 0.8rem; color: #999; border-top: 1px solid #eee; padding-top: 15px; margin-top: 20px; }
+        
+        .footer { text-align: center; padding: 50px 0; border-top: 1px solid #eee; margin-top: 80px; font-size: 0.85rem; color: #999; }
+    </style>
+</head>
+<body>
+
+<nav class="nav-minimal">
+    <div class="container d-flex justify-content-between align-items-center">
+        <a href="#" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #000; text-decoration: none;">Jihad.</a>
+        <div class="d-none d-md-block">
+            <a href="#about">tentang</a>
+            <a href="#projects">karya</a>
+            <a href="#contact">kontak</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero container">
+    <h1>Keserhanaan adalah<br>kecanggihan tertinggi.</h1>
+    <p>Halo, saya Jihad. Seorang pengembang web *full-stack* yang percaya bahwa kode yang bersih dan desain yang intim lebih bermakna daripada efek animasi yang berlebihan.</p>
+    <a href="#projects" class="btn-outline">Lihat Karya</a>
+</section>
+
+<section id="projects" class="container" style="max-width: 800px; padding-top: 50px;">
+    <h2 class="section-title">Karya Terpilih</h2>
+    
+    <div class="project-item row align-items-center">
+        <div class="col-md-3 text-md-end mb-3 mb-md-0"><span class="project-num">01.</span></div>
+        <div class="col-md-9 border-start pb-4 ps-4">
+            <h3 class="project-title">Trading Analysis Dashboard</h3>
+            <p class="project-desc">Sebuah antarmuka analisis pasar waktu nyata yang berkolaborasi dengan kecerdasan buatan Gemini, memberikan wawasan trading tanpa basa-basi.</p>
+            <ul class="tech-list">
+                <li>React</li>
+                <li>TypeScript</li>
+                <li>Vite</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="project-item row align-items-center">
+        <div class="col-md-3 text-md-end mb-3 mb-md-0"><span class="project-num">02.</span></div>
+        <div class="col-md-9 border-start pb-4 ps-4">
+            <h3 class="project-title">Sistem ERP Internal</h3>
+            <p class="project-desc">Menyederhanakan birokrasi HR dan manajemen pesanan melalui platform tersentralisasi, dirancang khusus untuk efisiensi.</p>
+            <ul class="tech-list">
+                <li>Laravel</li>
+                <li>MySQL</li>
+                <li>Blade</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="project-item row align-items-center">
+        <div class="col-md-3 text-md-end mb-3 mb-md-0"><span class="project-num">03.</span></div>
+        <div class="col-md-9 border-start pb-4 ps-4">
+            <h3 class="project-title">JihadMarket</h3>
+            <p class="project-desc">Ekosistem multi-vendor yang memberikan ruang bagi penjual dan pembeli berinteraksi dalam satu pasar digital yang adil.</p>
+            <ul class="tech-list">
+                <li>CodeIgniter 3</li>
+                <li>PHP</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        Dirancang dan dikembangkan dengan kehati-hatian oleh Jihad.<br>
+        © 2024.
+    </div>
+</footer>
+
+</body>
+</html>
